@@ -5,6 +5,7 @@ Simple-OAuth经历过两个开发版本的迭代，这个版本是第二个开�
 基于上一个大版本体现出的问题，再=在第二个开发版本中我对后端代码底层进行了推翻和重构，重新设计了新的鉴权机制且对底层算法和逻辑进行了重新构建。  
 
 Simple-OAuth是我全新构建的鉴权机制中的重要的组成部分，负责对客户端提交的登录请求进行验证，并颁发`token`，授权客户端在主服务器的行为。  
+
 ![Simple-AuthenticationSystem](https://user-images.githubusercontent.com/63186671/168552994-188ef964-f60d-49ab-9212-68ecfc8be575.svg)  
 Simple-OAuth就是上图中的TokenServer
 
