@@ -47,13 +47,13 @@ npm install
 | ---- | ---- |
 | 与TOKEN和主USER_ID对应 | 用于记录密码散列 |
 
-### 4.3 外部接口
+## 5. api接口
 Simple-OAuth包含两个接口，分别是获取token和获取id接口  
-#### 4.3.1 响应体格式
+### 5.1 响应体格式
 ```json
 { "statue":200,"date":"test" }
 ```
-#### 4.3.2 状态码信息
+### 5.2 状态码信息
 
 参考SimpleUser_v1.0的鉴权机制，TokenServer状态码沿用1.0版本状态码系统。
 
@@ -65,7 +65,7 @@ Simple-OAuth包含两个接口，分别是获取token和获取id接口
 | 400 | 查询错误或查询结果为空       |
 | 401 | 执行错误，包括越权或非法请求或执行 |
 
-#### 4.3.3 获取TOKEN接口
+### 5.3 获取TOKEN接口
 该接口通过客户端上传USER_ID和PASSWORD，鉴别密码正确与否，若密码和USER_ID匹配，则生成一个3600秒时效的token
 
 权限：公开
@@ -115,7 +115,7 @@ http://127.0.0.1:5231/token/get?id=1&password=test
 }
 ```
 
-#### 4.3.4 获取USER_ID接口
+### 5.4 获取USER_ID接口
 
 该接口通过上传token，返回注册token时绑定的USER_ID
 
