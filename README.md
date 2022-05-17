@@ -1,5 +1,5 @@
 # Simple-OAuth
-## 介绍
+## 1.介绍
 Simple-OAuth是一个基于node.js和MySQL的类似于OAuth的鉴权系统，该项目分离自正在开发的Simple-User数字身份管理系统的鉴权微服务  
 Simple-OAuth经历过两个开发版本的迭代，这个版本是第二个开发版本，由node.js后端开发而成；而第一个大版本由php开发而成，受限于本人技术原因，上线不久后暴露出诸多问题。  
 基于上一个大版本体现出的问题，再=在第二个开发版本中我对后端代码底层进行了推翻和重构，重新设计了新的鉴权机制且对底层算法和逻辑进行了重新构建。  
@@ -9,14 +9,14 @@ Simple-OAuth是我全新构建的鉴权机制中的重要的组成部分，负�
 ![Simple-AuthenticationSystem](https://user-images.githubusercontent.com/63186671/168552994-188ef964-f60d-49ab-9212-68ecfc8be575.svg)  
 Simple-OAuth就是上图中的TokenServer
 
-## 功能
+## 2.功能
 接收客户端的登录请求  
 判断登录请求中的用户id是否存在  
 从Mysql中提取对应id的密码散列，并与提交的密码计算的散列是否一致  
 颁发鉴权时效token，并写入token sql  
 获取服务端检验token请求，接受服务端发送的id，返回对应token和时效标签  
 
-## 安装 
+## 3.安装 
 git clone仓库  
 ```bash
 git clone https://github.com/SimpleAstronaut/Simple-OAuth/
@@ -26,14 +26,14 @@ git clone https://github.com/SimpleAstronaut/Simple-OAuth/
 npm run server
 ```  
 
-## 用法
+## 4.用法
 本项目基于node.js和MySQL开发，二次开发或使用前请确保node.js和MySLQ安装完成  
-### 运行依赖  
+### 4.1 运行依赖  
 npm安装依赖  
 ```bash
 npm install
 ```
-### 数据库
+### 4.2 数据库
 本项目需要数据库中包含三个空数据表，分别命名为：  
 `TOKEN`  `PASSWORD`  
 其中TOKEN用于存储时效token，PASSWORD用于存储用户id和密码散列  
@@ -47,13 +47,13 @@ npm install
 | ---- | ---- |
 | 与TOKEN和主USER_ID对应 | 用于记录密码散列 |
 
-### 外部接口
+### 4.3 外部接口
 Simple-OAuth包含两个接口，分别是获取token和获取id接口  
-#### 响应体格式
+#### 4.3.1 响应体格式
 ```json
 { "statue":200,"date":"test" }
 ```
-#### 状态码信息
+#### 4.3.2 状态码信息
 
 参考SimpleUser_v1.0的鉴权机制，TokenServer状态码沿用1.0版本状态码系统。
 
@@ -65,7 +65,7 @@ Simple-OAuth包含两个接口，分别是获取token和获取id接口
 | 400 | 查询错误或查询结果为空       |
 | 401 | 执行错误，包括越权或非法请求或执行 |
 
-#### 获取TOKEN接口
+#### 4.3.3 获取TOKEN接口
 该接口通过客户端上传USER_ID和PASSWORD，鉴别密码正确与否，若密码和USER_ID匹配，则生成一个3600秒时效的token
 
 权限：公开
@@ -115,7 +115,7 @@ http://127.0.0.1:5231/token/get?id=1&password=test
 }
 ```
 
-#### 获取USER_ID接口
+#### 4.3.4 获取USER_ID接口
 
 该接口通过上传token，返回注册token时绑定的USER_ID
 
